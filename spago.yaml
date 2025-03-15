@@ -1,6 +1,6 @@
 package:
   name: declarative-canvas
-  description: A simple wrapper around halogen-canvas which provides component input as the primary driver for drawing, allowing incorporation of the canvas into the declarative UI of a web page without manually updating it through queries. # ...except halogen-canvas is completely unlicensed so I have no idea if I can even legally use it considering bundled JS is effectively static linking... And like also I feel like it still exposes a "more raw" Canvas API than is actually nice to work with
+  description: A declaratively input-driven canvas component for Halogen
   dependencies:
     - prelude: ">=6.0.2 <7.0.0"
   test:
@@ -12,7 +12,7 @@ package:
       - my-spec-reporter
   publish:
     version: 0.1.0
-    license: MIT
+    license: Apache-2.0
     location:
       githubOwner: UnrelatedString
       githubRepo: purescript-halogen-declarative-canvas
