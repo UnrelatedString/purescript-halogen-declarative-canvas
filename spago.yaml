@@ -1,5 +1,6 @@
 package:
-  name: 
+  name: declarative-canvas
+  description: A simple wrapper around halogen-canvas which provides component input as the primary driver for drawing, allowing incorporation of the canvas into the declarative UI of a web page without manually updating it through queries. # ...except halogen-canvas is completely unlicensed so I have no idea if I can even legally use it considering bundled JS is effectively static linking... And like also I feel like it still exposes a "more raw" Canvas API than is actually nice to work with
   dependencies:
     - prelude: ">=6.0.2 <7.0.0"
   test:
@@ -9,6 +10,16 @@ package:
       - spec-quickcheck
       - spec-node
       - my-spec-reporter
+  publish:
+    version: 0.1.0
+    license: MIT
+    location:
+      githubOwner: UnrelatedString
+      githubRepo: purescript-halogen-declarative-canvas
+    owners:
+      - keytype: ssh-rsa
+        public: AAAAB3NzaC1yc2EAAAADAQABAAABAQCY1Gdnnq2tNSrBxKnxuLfSsl7sLjCU5Js9c3tW9/x12tA4g1grIOezpBAszHUr40XuzGMHwmd3i3iq45ORhNJeq8lbgp8I5Zc3Kv+nugSqPHWLVIfa3dwktBYpUaDIwurPZsiQwXL/QJLMwSFKLn4DK8ZctMv+8Uy123Z4rlLNfZ8obaP9odtpegNtcCJ7tHFyg0EsgFpYYZHWJd2fzB9m9YW0Hziyyc/bknOwiwCcjiLUKaSPIE/8UgiPJx1mvKopd65PbqZf093lhHl3TesWF5pqeS5esCOaBUkL6UHeQMiQGnlt/VHMvIQaXNa33RoR8luZtDmUolgXi221xrNX
+        id: june@sideros.rocks
 workspace:
   packageSet:
     registry: 63.5.0
