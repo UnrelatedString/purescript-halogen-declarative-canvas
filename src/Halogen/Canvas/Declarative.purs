@@ -40,7 +40,9 @@ type State =
   }
 
 -- | The type of `draw`. Represents instructions for drawing on the canvas.
-type Action = Context2D -> Effect Unit
+type DrawInstructions = Context2D -> Effect Unit
+
+type Action = DrawInstructions
 
 refLabel :: H.RefLabel
 refLabel = H.RefLabel "declCanvasRefLabel"
