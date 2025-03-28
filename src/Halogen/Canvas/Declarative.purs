@@ -25,6 +25,9 @@ import Graphics.Canvas
 import Unsafe.Coerce (unsafeCoerce)
 import Web.HTML.HTMLElement (HTMLElement)
 
+-- | The type of the render input given to a `declarativeCanvas` component.
+-- | `width` and `height` define the dimensions of the canvas,
+-- | while `draw` provides instructions for drawing its current state.
 type CanvasInput =
   { width :: Int
   , height :: Int
@@ -36,12 +39,14 @@ type State =
   , height :: Int
   }
 
+-- | The type of `draw`. Represents instructions for drawing on the canvas.
 type Action = Context2D -> Effect Unit
 
 refLabel :: H.RefLabel
 refLabel = H.RefLabel "declCanvasRefLabel"
 
 -- leaving queries and events as a TODO for now
+-- | The declarative canvas component, which is drawn on by passing instructions in its input.
 declarativeCanvas ::
   forall query output m.
   MonadEffect m =>
