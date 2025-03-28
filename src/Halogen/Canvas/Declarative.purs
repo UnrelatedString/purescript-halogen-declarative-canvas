@@ -1,7 +1,7 @@
 module Halogen.Canvas.Declarative
  ( declarativeCanvas
  , CanvasInput
- , Action
+ , DrawInstructions
  ) where
 
 import Prelude
@@ -31,7 +31,7 @@ import Web.HTML.HTMLElement (HTMLElement)
 type CanvasInput =
   { width :: Int
   , height :: Int
-  , draw :: Action
+  , draw :: DrawInstructions
   }
 
 type State =
