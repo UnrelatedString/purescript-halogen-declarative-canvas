@@ -4,6 +4,7 @@ package:
   dependencies:
     - prelude: ">=6.0.2 <7.0.0"
     - canvas: ">=6.0.0 <7.0.0"
+    - effect: ">=4.0.0 <5.0.0"
     - foldable-traversable: ">=6.0.0 <7.0.0"
     - halogen: ">=7.0.0 <8.0.0"
     - maybe: ">=6.0.0 <7.0.0"
@@ -17,7 +18,7 @@ package:
       - spec-node
       - my-spec-reporter
   publish:
-    version: 0.0.1
+    version: 0.0.2
     license: Apache-2.0
     location:
       githubOwner: UnrelatedString
