@@ -32,7 +32,10 @@ type CanvasInput =
   , draw :: Action
   }
 
-type State = Unit
+type State =
+  { width :: Int
+  , height :: Int
+  }
 
 type Action = Context2D -> Effect Unit
 
@@ -51,7 +54,7 @@ canvas = H.mkComponent
   }
 
 initialState :: CanvasInput -> State
-initialState _ = unit
+initialState { width, height } = { width, height }
 
 render ::
   forall m.
@@ -63,7 +66,10 @@ render rec = HTML.canvas
   , Prop.ref refLabel
   ]
 
-evalSpec :: EvalSpec
+evalSpec ::
+  forall output query m.
+  MonadEffect m =>
+  EvalSpec State query Action () CanvasInput output m
 evalSpec = H.defaultEval
   { receive = handleInput
   , handleAction = handleAction
