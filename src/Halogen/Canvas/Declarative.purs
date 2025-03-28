@@ -7,17 +7,24 @@ module Halogen.Canvas.Declarative
 import Prelude
 
 import Data.Maybe (Maybe(..))
+import Data.Traversable (for_)
 import Effect (Effect)
 import Effect.Class (class MonadEffect, liftEffect)
 import Halogen as H
+import Halogen.Component (EvalSpec)
 import Halogen.HTML as HTML
+import Halogen.HTML.Properties as Prop
 import Halogen.HTML.Events as Event
 import Graphics.Canvas
  ( CanvasElement
  , Context2D
+ , Dimensions
  , getContext2D
- , setCanvasDimensions
+ , getCanvasDimensions
+ , clearRect
  )
+import Unsafe.Coerce (unsafeCoerce)
+import Web.HTML.HTMLElement (HTMLElement)
 
 type CanvasInput =
   { width :: Int
@@ -25,9 +32,12 @@ type CanvasInput =
   , draw :: Action
   }
 
-type State = CanvasInput
+type State = Unit
 
 type Action = Context2D -> Effect Unit
+
+refLabel :: H.RefLabel
+refLabel = H.RefLabel "declCanvasRefLabel"
 
 -- leaving queries and events as a TODO for now
 canvas ::
@@ -41,6 +51,7 @@ canvas = H.mkComponent
   }
 
 initialState :: CanvasInput -> State
+initialState _ = unit
 
 render ::
   forall m.
@@ -49,17 +60,31 @@ render ::
 render rec = HTML.canvas
   [ Prop.width rec.width
   , Prop.height rec.height
+  , Prop.ref refLabel
   ]
 
-evalSpec :: H.EvalSpec
+evalSpec :: EvalSpec
 evalSpec = H.defaultEval
- { receive = handleInput
- }
+  { receive = handleInput
+  , handleAction = handleAction
+  }
 
 handleInput :: CanvasInput -> Maybe Action
+handleInput rec = Just rec.draw
 
--- handleAction ::
---   forall output m.
---   MonadEffect m =>
---   Action ->
---   H.HalogenM State Action () output m Unit
+handleAction ::
+  forall output m.
+  MonadEffect m =>
+  Action ->
+  H.HalogenM State Action () output m Unit
+handleAction action = do
+  maybeElem <- H.getHTMLElementRef refLabel
+  for_ maybeElem \elem -> liftEffect do
+    let c = toCanvasElement elem
+    ctx <- getContext2D c
+    { width, height } <- getCanvasDimensions c
+    clearRect ctx { x: 0.0, y: 0.0, width, height }
+    action ctx
+
+toCanvasElement :: HTMLElement -> CanvasElement
+toCanvasElement = unsafeCoerce
