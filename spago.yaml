@@ -1,5 +1,5 @@
 package:
-  name: declarative-canvas
+  name: halogen-declarative-canvas
   description: A declaratively input-driven canvas component for Halogen
   dependencies:
     - prelude: ">=6.0.2 <7.0.0"
@@ -18,7 +18,7 @@ package:
       - spec-node
       - my-spec-reporter
   publish:
-    version: 0.0.6
+    version: 0.0.7
     license: Apache-2.0
     location:
       githubOwner: UnrelatedString
