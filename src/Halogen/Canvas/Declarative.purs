@@ -1,10 +1,12 @@
 module Halogen.Canvas.Declarative
  ( canvas
  , CanvasInput
+ , Action
  ) where
 
 import Prelude
 
+import Data.Maybe (Maybe(..))
 import Effect (Effect)
 import Effect.Class (class MonadEffect, liftEffect)
 import Halogen as H
@@ -20,14 +22,14 @@ import Graphics.Canvas
 type CanvasInput =
   { width :: Int
   , height :: Int
-  , draw :: Context2D -> Effect Unit
+  , draw :: Action
   }
 
 type State = CanvasInput
 
--- leaving queries and events as a TODO for now
-type Action = Unit
+type Action = Context2D -> Effect Unit
 
+-- leaving queries and events as a TODO for now
 canvas ::
   forall query output m.
   MonadEffect m =>
@@ -51,8 +53,10 @@ render rec = HTML.canvas
 
 evalSpec :: H.EvalSpec
 evalSpec = H.defaultEval
---  { handleAction = handleAction
---  }
+ { receive = handleInput
+ }
+
+handleInput :: CanvasInput -> Maybe Action
 
 -- handleAction ::
 --   forall output m.
