@@ -1,7 +1,7 @@
 {
   "workspace": {
     "packages": {
-      "declarative-canvas": {
+      "halogen-declarative-canvas": {
         "path": "./",
         "core": {
           "dependencies": [
