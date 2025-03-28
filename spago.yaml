@@ -17,7 +17,7 @@ package:
       - spec-node
       - my-spec-reporter
   publish:
-    version: 0.1.0
+    version: 0.0.1
     license: Apache-2.0
     location:
       githubOwner: UnrelatedString

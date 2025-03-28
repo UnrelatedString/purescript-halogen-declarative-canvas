@@ -14,11 +14,10 @@ import Halogen as H
 import Halogen.Component (EvalSpec)
 import Halogen.HTML as HTML
 import Halogen.HTML.Properties as Prop
-import Halogen.HTML.Events as Event
+-- import Halogen.HTML.Events as Event
 import Graphics.Canvas
  ( CanvasElement
  , Context2D
- , Dimensions
  , getContext2D
  , getCanvasDimensions
  , clearRect
