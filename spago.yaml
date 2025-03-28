@@ -3,6 +3,8 @@ package:
   description: A declaratively input-driven canvas component for Halogen
   dependencies:
     - prelude: ">=6.0.2 <7.0.0"
+    - canvas: ">=6.0.0 <7.0.0"
+    - halogen: ">=7.0.0 <8.0.0"
   test:
     main: Test.Main
     dependencies:
