@@ -1,5 +1,5 @@
 module Halogen.Canvas.Declarative
- ( canvas
+ ( declarativeCanvas
  , CanvasInput
  , Action
  ) where
@@ -43,11 +43,11 @@ refLabel :: H.RefLabel
 refLabel = H.RefLabel "declCanvasRefLabel"
 
 -- leaving queries and events as a TODO for now
-canvas ::
+declarativeCanvas ::
   forall query output m.
   MonadEffect m =>
   H.Component query CanvasInput output m
-canvas = H.mkComponent
+declarativeCanvas = H.mkComponent
   { initialState
   , render
   , eval: H.mkEval evalSpec
