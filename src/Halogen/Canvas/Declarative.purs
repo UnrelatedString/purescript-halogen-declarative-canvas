@@ -1,8 +1,8 @@
 module Halogen.Canvas.Declarative
- ( declarativeCanvas
- , CanvasInput
- , DrawInstructions
- ) where
+  ( declarativeCanvas
+  , CanvasInput
+  , DrawInstructions
+  ) where
 
 import Prelude
 
@@ -16,12 +16,12 @@ import Halogen.HTML as HTML
 import Halogen.HTML.Properties as Prop
 -- import Halogen.HTML.Events as Event
 import Graphics.Canvas
- ( CanvasElement
- , Context2D
- , getContext2D
- , getCanvasDimensions
- , clearRect
- )
+  ( CanvasElement
+  , Context2D
+  , getContext2D
+  , getCanvasDimensions
+  , clearRect
+  )
 import Unsafe.Coerce (unsafeCoerce)
 import Web.HTML.HTMLElement (HTMLElement)
 
